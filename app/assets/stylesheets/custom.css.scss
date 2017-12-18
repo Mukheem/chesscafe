@@ -23,6 +23,17 @@ h2 {
 h3 {
     color: black;
 }
+h7{
+	 -webkit-text-stroke: 1px black;
+   color: white;
+   font-size: 40px;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
 
 .vl {
 			    border-left: 4px solid black;
@@ -64,6 +75,10 @@ background-size: Cover;
 .btn-xlarge:hover{	
 	background-color: white;
  	color: black;
+}
+
+.h{
+	text-outline: thickness blur color;
 }
 
 .img-circle1{
