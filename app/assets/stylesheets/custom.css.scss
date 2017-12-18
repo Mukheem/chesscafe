@@ -3,13 +3,42 @@ $navbar-default-bg: black;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//Home Page Decoration Starts
+body{
+	background-color: #bcbcbc,
+}
+footer{
+	background-color: black;
+	border-radius: 3px;
+	color: #fff;
+}
+
+h1 {
+    color: black;
+}
+h2 {
+    color: black;
+}
+
+h3 {
+    color: black;
+}
+
+.vl {
+			    border-left: 4px solid black;
+			    height: 200px;
+			    position: absolute;
+			    left: 50%;
+			    margin-left: -3px;
+			    top: 0;
+	}
+
 #logo{
 
 	float: left;
 	font-size: 1.5em;
 	color: #fff;
 	letter-spacing: -1px;
-
 }
 
 #logo:hover{	
@@ -17,10 +46,10 @@ $navbar-default-bg: black;
 }
 
 .jumbotron{
-background-image: asset-url('jumbotron-bg.jpg');
-background-size: cover;
-height: 300px;
-	
+background-image: asset-url('jumbotron-bg.png');
+background-size: Cover;
+// height: 300px;
+ border: 5px solid black
 }
 
 .center{
@@ -36,3 +65,33 @@ height: 300px;
 	background-color: white;
  	color: black;
 }
+
+.img-circle1{
+background-image: asset-url('Users.jpg');
+width: 100px;
+ height: 100px;
+ background-size: cover;
+ display: block;
+ border-radius: 100px;
+ border: 10px solid black
+}
+.img-circle2{
+background-image: asset-url('Bill.jpg');
+width: 100px;
+ height: 100px;
+ background-size: cover;
+ display: block;
+ border-radius: 100px;
+ border: 10px solid black
+}
+.img-circle3{
+background-image: asset-url('Inventory.png');
+width: 100px;
+ height: 100px;
+ background-size: cover;
+ display: block;
+ border-radius: 100px;
+ border: 10px solid black
+}
+
+//Home Page Decoration Ends
