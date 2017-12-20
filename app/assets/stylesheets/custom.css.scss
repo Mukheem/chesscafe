@@ -1,4 +1,4 @@
-$navbar-default-bg: black;
+$navbar-default-bg: black; //#4d1a00
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -8,7 +8,7 @@ body{
 	background-color: #fff,
 }
 footer{
-	background-color: black;
+	background-color:black;
 	border-radius: 3px;
 	color: #fff;
 }
@@ -26,7 +26,7 @@ h3 {
 h7{
 	 -webkit-text-stroke: 1px black;
    color: white;
-   font-size: 40px;
+   font-size: 70px;
    text-shadow:
        3px 3px 0 #000,
      -1px -1px 0 #000,  
@@ -53,7 +53,7 @@ h7{
 }
 
 #logo:hover{	
-	color:#d6d6d6;
+	color:black;
 }
 
 .jumbotron{
