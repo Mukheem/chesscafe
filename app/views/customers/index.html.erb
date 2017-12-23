@@ -1,0 +1,25 @@
+<% @customers.each do |customer| %>
+
+	<div class="row">
+		<div class="col-md-2">
+			<section class='center'>
+			</section>
+		</div>
+		<div class="col-md-8 well">
+			<h4 class="font-clr"><%= customer.name %><small>&nbsp;&nbsp;(<%= customer.gender %>)</small></h4>
+			<h5><%= customer.phonenumber %></h5>
+			<h5><%= customer.email %></h5>
+			<p><h5><%= customer.address %></h5></p>
+			<div class="pull-right">
+			<span class="quiet">
+				<small>Created by: <%= customer.created_by %>,
+						<%= time_ago_in_words(customer.created_at) %> ago.
+				</small>
+			</span>
+			</div>
+		</div>
+
+	</div>
+
+
+<%end%>
