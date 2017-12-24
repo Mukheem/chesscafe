@@ -1,0 +1,61 @@
+<%= render 'shared/page_title', title: "Customer Details" %>
+<br>
+<div class="row">
+	
+	<div class="col-md-12">
+		
+		<%= form_for(@customer, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+			<div class="form-group">
+				<div class="control-label col-md-4">
+					<%= f.label :phonenumber, "Phone Number:" %>
+				</div>
+				<div class="col-md-4">
+					<%= f.text_field :phonenumber, class: "form-control", placeholder: "Enter Phone Number", disabled: "true" %>
+				</div>
+				<div class="col-md-4">
+					<!--<%= f.submit "Search", class: "btn btn-info btn-xlarge" %> -->
+   				</div>
+			</div>
+			<br><hr><br>
+			<div class="form-group">
+				<div class="control-label col-md-2">
+					<%= f.label :name, "Name:" %>
+				</div>
+				<div class="col-md-4">
+					<%= f.text_field :name, class: "form-control", placeholder: "Enter Name", autofocus: true%>
+				</div>
+				<div class="control-label col-md-2">
+					<%= f.label :email, "E-Mail:" %>
+				</div>
+				<div class="col-md-4">
+					<%= f.text_field :email, class: "form-control", placeholder: "Enter E-Mail"%>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="control-label col-md-2">
+					<%= f.label :gender, "Gender:" %>
+				</div>
+				<div class="col-md-4">
+					<%=f.radio_button :gender, "Male" %><%= f.label :Male %><br>
+					<%=f.radio_button :gender, "FeMale" %><%= f.label :Female %>
+				</div>
+				<div class="control-label col-md-2">
+					<%= f.label :address, "Address:" %>
+				</div>
+				<div class="col-md-4">
+					<%= f.text_area :address, class: "form-control", placeholder: "Provide Address", size: "24x6"%>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="pull-left">
+					<p>[<%= link_to "Reset Page", "#"%>]</p>
+				</div>
+				<div class="pull-right">
+					<p><%= link_to "Next >>", "#", class: "btn btn-info btn-xlarge" %></p>
+				</div>
+			</div>
+		<%end%>
+
+	</div>
+
+</div>

@@ -1,3 +1,6 @@
+<h1 align="center"> Listing all Customers </h1>
+<hr>
+
 <% @customers.each do |customer| %>
 
 	<div class="row">
@@ -7,7 +10,7 @@
 		</div>
 		<div class="col-md-8 well">
 			<h4 class="font-clr"><%= customer.name %><small>&nbsp;&nbsp;(<%= customer.gender %>)</small></h4>
-			<h5><%= customer.phonenumber %></h5>
+			<h5><%= link_to customer.phonenumber, customer_path(customer) %></h5>
 			<h5><%= customer.email %></h5>
 			<p><h5><%= customer.address %></h5></p>
 			<div class="pull-right">
