@@ -30,10 +30,19 @@ class CustomersController < ApplicationController
 				cust.save
 				flag=1
 				retry
-			end
-				
-		
-			
+			end			
+	end
+
+	def update
+		@customer=Customer.find(params[:id])
+
+		if @customer.update(customer_params)
+			flash[:success] = "Customer details updated successfully."
+			redirect_to customer_path(@customer)
+		else
+			flash[:warning] = "Error in updating details."
+			redirect_to customer_path(@customer)
+		end
 	end
 
 	private

@@ -4,7 +4,3 @@ $(window).on('load',function(){
   $("#myModal").modal('show');
 });
 
-document.getElementsByClassName("modal-link").onclick = function () {
-         location.reload();
-    };
-
