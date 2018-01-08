@@ -38,7 +38,7 @@ class CustomersController < ApplicationController
 
 		if @customer.update(customer_params)
 			flash[:success] = "Customer details updated successfully."
-			redirect_to customer_path(@customer)
+			redirect_to new_order_path
 		else
 			flash[:warning] = "Error in updating details."
 			redirect_to customer_path(@customer)

@@ -1,0 +1,61 @@
+<!-- <button id="ActionSubmit">Submit</button> -->
+
+<%= render 'shared/page_title', title: "Order Details" %>
+
+<br>
+
+<%= form_for(@order, :html => {class: "form-horizontal", role: "form"})do |f| %>
+	<div class="form-group">
+		<div class="control-label col-md-2">
+   			 <%= f.label :ordertype %>
+   		</div>
+   		<div class="col-md-2">
+    		<%= f.text_field :ordertype, class: "form-control" %>
+    	</div>
+
+    
+    	<div class="control-label col-md-2">
+   			 <%= f.label :totalprice %>
+   		</div>
+   		<div class="col-md-2">
+    		<%= f.text_field :totalprice, class: "form-control" %>
+    	</div>
+    
+    	<div class="control-label col-md-2">
+    		<%= f.label :paymentmethod %>
+    	</div>
+    	<div class="col-md-2">
+    		<%= f.text_field :paymentmethod, class: "form-control" %>
+    	</div>
+	</div>
+    <br>
+<div class="table-users">
+   <div class="header">Users</div>
+    <table id="tabledata">
+        <thead>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Tax</th>
+            <th>Discount</th>
+            <th>Total</th>
+        </thead>
+        <tbody id="input"></tbody>
+        <tbody id="template">
+            <tr>
+                <td><input name="order[order_placed][][itemname]" type="text"  size='30' class="form-control"/></td>
+                <td><input name="order[order_placed][][quantity]" type="text"  size='10' class="form-control" /></td>
+                <td><input name="order[order_placed][][unitprice]" type="text"  size='10' class="form-control" /></td>
+                <td><input name="order[order_placed][][tax]" type="text"  size='10' class="form-control"/></td>
+                <td><input name="order[order_placed][][discount]" type="text"  size='10' class="form-control"/></td>
+                <td><input name="order[order_placed][][itemtotalprice]" type="text" size='10' class="form-control" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <label id="ActionAddRow">Add Row</label>
+</div>
+    
+
+    <%= f.submit %>
+<% end %>
+
