@@ -10,6 +10,38 @@ class OrdersController < ApplicationController
 		@order=Order.new(order_params)
 		@order.customer=Customer.first
 		@order.save
+
+		# puts @order.order_placed
+		 arra = @order.order_placed
+		 flag=0
+		 array=Array.new
+		 puts "Actual Array"
+		 puts arra
+		 puts "====================="
+		 arra.each do |hash|
+		 	puts "Hash is"
+		 	puts  hash
+		 	  # puts "#{hash[:itemname]} #{hash[:quantity]} #{hash[:unitprice]} #{hash[:tax]} #{hash[:discount]} #{hash[:itemtotalprice]}"
+		    	hash.each do |key, value|
+		    		puts value
+					 if value.blank?
+					  	flag=1
+					 end
+				end	
+
+
+				if flag==0
+					array.push(hash)
+				end
+				if flag==1
+					puts "------------------Nothing-------------------"
+					flag=0
+				end
+				puts "End of first Hash--"
+		    end	
+
+		   puts array	
+		   
 	end
 
 	private

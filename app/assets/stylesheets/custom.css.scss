@@ -1,4 +1,5 @@
-$navbar-default-bg: #1F45FC; //#4d1a00
+$baseColo: #2196F3;
+$navbar-default-bg: darken($baseColo, 4%); //#1F45FC; //#4d1a00
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -11,8 +12,8 @@ body{
 	text-rendering: optimizeLegibility !important;
 	-webkit-font-smoothing: antialiased !important;
 	color: #777;
-	background-color: #E5E4E2;
-	font-weight: 300;
+	background-color: lighten($baseColo, 40%);  //#87CEEB; //#E5E4E2;
+  font-weight: 300;
 	width: 100% !important;
 	height: 100% !important;
 }
@@ -50,7 +51,7 @@ a:hover, a:focus {
 }
 
 footer{
-	background-color: #1F45FC;
+	background-color: #2196F3; //#1F45FC;
 	border-radius: 3px;
 	color: #fff;
 }
@@ -209,7 +210,7 @@ $padding: 10px;
 .header {
    background-color: darken($baseColor, 5%);
    color: white;
-   font-size: 1.5em;
+   font-size: 1.2em;
    padding: 1rem;
    text-align: center;
    text-transform: uppercase;
@@ -217,9 +218,9 @@ $padding: 10px;
 
 
 .table-users {
-   border: 1px solid darken($baseColor, 5%);
+   //border: 1px solid darken($baseColor, 5%);
    border-radius: $borderRadius;
-   box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+   //box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
    max-width: calc(100% + 3em);
    margin: 1em auto;
   overflow: hidden;

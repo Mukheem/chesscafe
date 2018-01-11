@@ -20,6 +20,7 @@ $(function () {
                 inputitemname.setAttribute("type", "text");
                 inputitemname.setAttribute("name", nameAttributitemname);
                 inputitemname.setAttribute("size", siz);
+                inputitemname.setAttribute("class", "form-control");
                 //and append it to <td> element and then <tr> 
                 var td = document.createElement("td");
                 td.appendChild(inputitemname);  
