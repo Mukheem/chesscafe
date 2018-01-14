@@ -15,5 +15,44 @@
 //= require toastr
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require select2
 //= require_tree  .
 
+/*(function($){
+   "use strict";
+    $(document).on('ready', function(){
+        $("#order_place_id").select2({
+            //allowClear: true,
+            theme: "bootstrap",
+            tags: true,
+            placeholder: "Choose an Item",
+    		allowClear: true
+        });
+    });
+}(jQuery));*/
+
+
+$(document).ready(function() {
+
+ //function to initialize select2
+  function initializeSelect2(selectElementObj) {
+    selectElementObj.select2({
+      //width: "120%",
+      //tags: true
+      placeholder: "Choose an Item",
+      allowClear: true
+    });
+  }
+
+
+ //onload: call the above function 
+  $("#order_place_id").each(function() {
+    initializeSelect2($(this));
+  });
+
+ //Onload: When dynamic row is inserted 
+$(".add-new-select").on("click", function() {
+      initializeSelect2($(trGlobal));
+  });
+
+});

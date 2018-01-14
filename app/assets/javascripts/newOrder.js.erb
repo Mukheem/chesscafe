@@ -1,0 +1,127 @@
+ var trGlobal; //Vriable to initialise select2 on dynalic load
+$(function () {
+    //var flag = 1;
+    var addInputRow = function () {
+        //create <tr> tag and <td> tags
+              var tr = document.createElement("tr");
+                
+
+            function callback(attribname,siz){
+                //Replace 0 with falg variable orderplaced[][itemname] 
+                /*idAttributitemname = 
+                       "order[orderplaced][" + attribname + "][0]".replace("0", flag);
+                nameAttributitemname = 
+                       "order[orderplaced][" + attribname + "][0]".replace("0", flag);*/
+
+                nameAttributitemname = 
+                       "order[order_placed][][" + attribname + "]";
+                
+                //create input for itemname, set it's type, id and name attribute
+                var inputitemname = document.createElement("INPUT");
+                inputitemname.setAttribute("type", "text");
+                inputitemname.setAttribute("name", nameAttributitemname);
+                inputitemname.setAttribute("size", siz);
+                inputitemname.setAttribute("class", "form-control");
+                //and append it to <td> element and then <tr> 
+                var td = document.createElement("td");
+                td.appendChild(inputitemname);  
+                tr.appendChild(td);
+            }
+
+            function callbackItemName(attribname,siz){
+                //Replace 0 with falg variable orderplaced[][itemname] 
+                /*<select name="order[order_placed][][itemname]" id="order_place_id" class="form-control">
+                        <option value=""></option>
+                        <% Stock.all.each do |stock| %>
+                            <option value="<%= stock.item_name %>">
+                                <%= stock.item_name %>
+                            </option>
+                        <% end %>
+                    </select>*/
+
+                nameAttributitemname = 
+                       "order[order_placed][][" + attribname + "]";
+                
+                //create input for itemname, set it's type, id and name attribute style="width: 300px"
+                var inputitemname = document.createElement("select");
+                inputitemname.setAttribute("id", "order_place_id");
+                inputitemname.setAttribute("name", nameAttributitemname);
+                inputitemname.setAttribute("style", "width: 300px");
+                inputitemname.setAttribute("class", "form-control");
+
+                var optionInputItemName = document.createElement("option");
+                optionInputItemName.setAttribute("value","");
+
+                inputitemname.appendChild(optionInputItemName);
+                inputitemname.append("<% Stock.all.each do |stock| %>");
+
+                var optionInputItemNameTwo = document.createElement("option");
+                optionInputItemNameTwo.setAttribute("value","<%= stock.item_name %>");
+                var optionInputItemNameTwoDisplayText = document.createTextNode("<%= stock.item_name %>");
+                optionInputItemNameTwo.appendChild(optionInputItemNameTwoDisplayText);
+                
+
+                inputitemname.appendChild(optionInputItemNameTwo);
+                //inputitemname.append("<%= stock.item_name %><% end %>")
+
+                //and append it to <td> element and then <tr> 
+                var td = document.createElement("td");
+                td.appendChild(inputitemname);  
+                tr.appendChild(td);
+                trGlobal = inputitemname;
+            }
+
+
+            function callbackMinusbutton(){
+                //Replace 0 with falg variable orderplaced[][itemname] 
+                /*<td>
+                    <button type="button" class="btn btn-default btn-sm sub" onClick="$(this).closest('tr').remove();">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                </td>*/
+
+                
+                
+                //create input for itemname, set it's type, id and name attribute
+                var inputitemname = document.createElement("button");
+                inputitemname.setAttribute("type", "button");
+                inputitemname.setAttribute("name", "MinusButton");
+                inputitemname.setAttribute("onClick", "$(this).closest('tr').remove();");
+                inputitemname.setAttribute("class", "btn btn-default btn-sm sub");
+
+                 var inputitemnameSpan = document.createElement("span");
+                 inputitemnameSpan.setAttribute("class", "glyphicon glyphicon-minus");
+
+                 inputitemname.appendChild(inputitemnameSpan);
+
+                //and append it to <td> element and then <tr> 
+                var td = document.createElement("td");
+                td.appendChild(inputitemname);  
+                tr.appendChild(td);
+            }
+
+            callbackItemName("itemname","30");
+            callback("quantity","10");
+            callback("unitprice","10");
+            callback("tax","10");
+            callback("discount","10");
+            callback("itemtotalprice","10");
+            callbackMinusbutton();
+            
+               document.getElementById("template").appendChild(tr);
+
+
+               // flag = flag + 1;
+
+        //$('#input').append($('#template').html());
+    }; 
+
+    var addAll = function (){
+         addInputRow();
+    };
+
+   /* $('#ActionAddRow').on('click', addAll);*/
+   $('.add').on('click', addAll);
+
+    
+});

@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
 		@order=Order.new
 	end
 
+	def getdata
+
+	end
+
 	def create
 		@order=Order.new(order_params)
 		@order.customer=Customer.first

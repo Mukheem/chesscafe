@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root "pages#home"
   get 'pages/home', to: 'pages#home'
-
   resources :customers
   resources :orders
+   get 'getdata', to: 'orders#getdata' 
+  
 end
