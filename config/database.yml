@@ -40,7 +40,7 @@ test:
 production:
    adapter: postgresql
     encoding: unicode
-    database: databasename
+    database: database_postgresql
     pool: 5
-    username: database_postgresql
+    username: postgres
     password: secret
