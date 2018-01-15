@@ -38,7 +38,7 @@ test:
     password: secret
 
 production:
-   adapter: postgresqlr
+   adapter: postgresql
     encoding: unicode
     database: databasename
     pool: 5
