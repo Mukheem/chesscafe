@@ -40,7 +40,7 @@
 test:
    adapter: postgresql
     encoding: unicode
-    database: database_postgresql
+    database: database_postgresql_test
     pool: 5
     username: postgres
     password: secret

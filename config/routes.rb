@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'pages/home', to: 'pages#home'
   resources :customers
   resources :orders
-   get 'getdata', to: 'orders#getdata' 
+  # get 'getdata', to: 'orders#getdata' 
   
 end
