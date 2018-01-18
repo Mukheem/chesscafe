@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 	end
 
 	def getdata
-
+		item_name_selected= params[:"order[order_placed][][itemname]"]
 	end
 
 	def create
