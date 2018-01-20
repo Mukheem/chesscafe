@@ -52,7 +52,11 @@
 
 					<select name="order[order_placed][][itemname]" id="order_place_id" class="form-control" style="width: 300px">
 						<option value=""></option>
-				        <option value="">Meee taataa tuuu</option>
+				        <% Item.all.each do |item| %>
+				            <option value="<%= item.item_name %>">
+				                <%= item.item_name %>
+				            </option>
+	 					<% end %>
 				    </select>
 
             	</td>

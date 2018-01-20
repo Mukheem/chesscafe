@@ -28,7 +28,40 @@ $(function () {
                 tr.appendChild(td);
             }
 
-            
+            function callbackItemName(attribname,siz){
+                //Replace 0 with falg variable orderplaced[][itemname] 
+               
+                nameAttributitemname = 
+                       "order[order_placed][][" + attribname + "]";
+                
+                //create input for itemname, set it's type, id and name attribute style="width: 300px"
+                var inputitemname = document.createElement("select");
+                inputitemname.setAttribute("id", "order_place_id");
+                inputitemname.setAttribute("name", nameAttributitemname);
+                inputitemname.setAttribute("style", "width: 300px");
+                inputitemname.setAttribute("class", "form-control");
+
+                var optionInputItemName = document.createElement("option");
+                optionInputItemName.setAttribute("value","");
+
+                inputitemname.appendChild(optionInputItemName);
+                inputitemname.append("<% Item.all.each do |item| %>");
+
+                var optionInputItemNameTwo = document.createElement("option");
+                optionInputItemNameTwo.setAttribute("value","<%= item.item_name %>");
+                var optionInputItemNameTwoDisplayText = document.createTextNode("<%= item.item_name %>");
+                optionInputItemNameTwo.appendChild(optionInputItemNameTwoDisplayText);
+                
+
+                inputitemname.appendChild(optionInputItemNameTwo);
+                //inputitemname.append("<%= item.item_name %><% end %>")
+
+                //and append it to <td> element and then <tr> 
+                var td = document.createElement("td");
+                td.appendChild(inputitemname);  
+                tr.appendChild(td);
+                trGlobal = inputitemname;
+            }
 
 
             function callbackMinusbutton(){
@@ -59,8 +92,7 @@ $(function () {
                 tr.appendChild(td);
             }
 
-           // callbackItemName("itemname","30");
-           callback("itemname","30");
+            callbackItemName("itemname","30");
             callback("quantity","10");
             callback("unitprice","10");
             callback("tax","10");
