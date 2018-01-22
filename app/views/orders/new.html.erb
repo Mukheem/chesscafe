@@ -43,22 +43,14 @@
         <tbody id="template">
         	<tr>
             	<td>
-            		<!-- 
-					<select name="order[order_placed][][itemname]" id="order_place_id" class="form-control" style="width: 300px">
-						<option value=""></option>
-				        
-				       
-				    </select> -->
-
-					<select name="order[order_placed][][itemname]" id="order_place_id" class="form-control" style="width: 300px">
+            		<select name="order[order_placed][][itemname]" id="order_place_id" class="form-control delete-comment" style="width: 300px">
 						<option value=""></option>
 				        <% Item.all.each do |item| %>
 				            <option value="<%= item.item_name %>">
 				                <%= item.item_name %>
 				            </option>
-	 					<% end %>
+	 						<% end %>
 				    </select>
-
             	</td>
                 <!-- <td><input name="order[order_placed][][itemname]" type="text"  size='30' class="form-control"/></td> -->
                 <td><input name="order[order_placed][][quantity]" type="text"  size='10' class="form-control" /></td>

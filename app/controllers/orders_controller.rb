@@ -3,11 +3,17 @@ class OrdersController < ApplicationController
 	def new
 		@order=Order.new
 	end
-
+=begin
 	def getdata
 		item_name_selected= params[:"order[order_placed][][itemname]"]
+		#puts item_name_selected
 	end
 
+	def show
+		item_name_selected= params[:"order[order_placed][][itemname]"]
+		#puts item_name_selected
+	end
+=end
 	def create
 		@order=Order.new(order_params)
 		@order.customer=Customer.first

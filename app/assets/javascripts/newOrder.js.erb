@@ -1,3 +1,69 @@
+
+$(document).on('change', 'select', function() {    //var url = $('.delete-comment').attr('data-url');
+    alert('error');
+
+    $.ajax({
+      url: "/items/getdata",
+      type: 'get',
+      data: {data_value: $(this).val()},
+      dataType: 'json',
+      success: function (data) {
+         alert('error2');
+      },
+      error: function () {
+        alert('error');
+      }
+    });
+
+   
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  var trGlobal; //Vriable to initialise select2 on dynalic load
 $(function () {
     //var flag = 1;
