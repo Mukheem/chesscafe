@@ -1,14 +1,21 @@
 
 $(document).on('change', 'select', function() {    //var url = $('.delete-comment').attr('data-url');
-    alert('error');
-
+    //alert('error');
+    var tr = $(this).closest('tr');
     $.ajax({
       url: "/items/getdata",
       type: 'get',
       data: {data_value: $(this).val()},
       dataType: 'json',
       success: function (data) {
-         alert('error2');
+        
+         
+         tr.find('input[name="order[order_placed][][unitprice]"]').val(data.unit_price);
+
+         tr.find('input[name="order[order_placed][][tax]"]').val(data.tax);
+         tr.find('input[name="order[order_placed][][discount]"]').val(data.discount);
+
+        
       },
       error: function () {
         alert('error');
@@ -105,7 +112,7 @@ $(function () {
                 inputitemname.setAttribute("id", "order_place_id");
                 inputitemname.setAttribute("name", nameAttributitemname);
                 inputitemname.setAttribute("style", "width: 300px");
-                inputitemname.setAttribute("class", "form-control");
+                inputitemname.setAttribute("class", "form-control delete-comment");
 
                 var optionInputItemName = document.createElement("option");
                 optionInputItemName.setAttribute("value","");
