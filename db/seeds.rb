@@ -7,5 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #create{:item_name => "Sample", :item_id => "001", :unit_price => "1", :tax => "0", :discount => "0"}
 require 'open-uri'
+
+		Item.delete_all
 		Item.create(:item_name => "Sample", :item_id => "001", :unit_price => "1", :tax => "0", :discount => "0")
 		Item.create(:item_name => "Sample_1", :item_id => "002", :unit_price => "2", :tax => "0", :discount => "0")

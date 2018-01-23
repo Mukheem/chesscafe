@@ -43,7 +43,7 @@
         <tbody id="template">
         	<tr>
             	<td>
-            		<select name="order[order_placed][][itemname]" id="order_place_id" class="form-control delete-comment" style="width: 300px">
+            		<select name="order[order_placed][][itemname]" id="order_place_id" class="form-control" style="width: 300px">
 						<option value=""></option>
 				        <% Item.all.each do |item| %>
 				            <option value="<%= item.item_name %>">

@@ -1,5 +1,5 @@
 
-$(document).on('change', 'select', function() {    //var url = $('.delete-comment').attr('data-url');
+$(document).on('change', 'select', function() {
     //alert('error');
     var tr = $(this).closest('tr');
     $.ajax({
@@ -24,47 +24,6 @@ $(document).on('change', 'select', function() {    //var url = $('.delete-commen
 
    
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -112,7 +71,7 @@ $(function () {
                 inputitemname.setAttribute("id", "order_place_id");
                 inputitemname.setAttribute("name", nameAttributitemname);
                 inputitemname.setAttribute("style", "width: 300px");
-                inputitemname.setAttribute("class", "form-control delete-comment");
+                inputitemname.setAttribute("class", "form-control");
 
                 var optionInputItemName = document.createElement("option");
                 optionInputItemName.setAttribute("value","");
