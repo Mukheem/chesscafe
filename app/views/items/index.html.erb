@@ -1,6 +1,11 @@
 <!-- Rendering Title -->
 <%= render 'shared/page_title', title: "Listing Menu Items" %>
 <br>
+<div class="form-group">
+                <div class="pull-left">
+                    <p>[<%= link_to "New Menu Item", new_item_path %>]</p>
+                </div>
+    </div>
 <div class="table-users">
    <div class="header">Menu Items</div>
     <table id="tabledata">
