@@ -1,31 +1,75 @@
-<!-- <button id="ActionSubmit">Submit</button> -->
+<!-- Checking for Error messages if any-->
 
+<% if @order.errors.any? %>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h4>
+					<%= pluralize(@order.errors.count,"error") %> stopped this <%= @order.class %> from being saved.
+				</h4>
+			</div>
+			<div class="panel-body">
+				<ul>
+					<% @order.errors.full_messages.each do |msg| %>
+					<li> <%= msg %> </li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<!-- Rendering Title -->
 <%= render 'shared/page_title', title: "Order Placement" %>
 <br>
 
-<%= form_for(@order, :html => {class: "form-horizontal", role: "form"})do |f| %>
+<%= form_for(@order, :html => {class: "form-inline", role: "form"})do |f| %>
+<div class="container-fluid">
+  <div class="row">
 	<div class="form-group">
-		<div class="control-label col-md-2">
-   			 <%= f.label :ordertype %>
+		<div class="control-label col-md-6 col-md-pull-4">
+   			 <%= f.label :ordertype, "Order Type" %>
    		</div>
-   		<div class="col-md-2">
+   		<div class="col-md-2 col-md-pull-6">
    			<%= f.select(:ordertype, Order::ORDER_TYPE_LIST, {}, {:class => 'form-control'})  %>
     	</div>
-
-    	<div class="control-label col-md-2">
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-6 col-md-pull-4">
+   			 <%= f.label :table_no, "Table #" %>
+   		</div>
+   		<div class="col-md-1 col-md-pull-6">
+    		<%= f.text_field :table_no, class: "form-control input-width", maxlength: "2" %>
+    	</div>
+    </div>
+    <div class="form-group">
+    	<div class="control-label col-md-8 col-md-pull-4">
+   			 <%= f.label :discount_on_bill, "Discount (%)" %>
+   		</div>
+   		<div class="col-md-2 col-md-pull-6">
+    		<%= f.text_field :discount_on_bill, class: "form-control input-width", maxlength: "2" %>
+    	</div>
+    </div>
+    <div class="form-group">
+    	<div class="control-label col-md-4 col-md-pull-4">
    			 <%= f.label :totalprice %>
    		</div>
-   		<div class="col-md-2">
-    		<%= f.text_field :totalprice, class: "form-control" %>
+   		<div class="col-md-1 col-md-pull-4">
+    		<%= f.text_field :totalprice, class: "form-control input-width" %>
     	</div>
-    
-    	<div class="control-label col-md-2">
-    		<%= f.label :paymentmethod %>
+    </div>
+    <div class="form-group">
+       <div class="control-label col-md-4 col-md-pull-4">
+    		<%= f.label :paymentmethod, "Payment" %>
     	</div>
-    	<div class="col-md-2">
-    		<%= f.select(:paymentmethod, Order::PAYMENT_METHOD_LIST, {}, {:class => 'form-control'})  %>
+    	<div class="col-md-4 col-md-pull-4">
+    		<%= f.select(:paymentmethod, Order::PAYMENT_METHOD_LIST, {}, {:class => 'form-control input-width'})  %>
     	</div>
 	</div>
+  </div>
+</div>
     <br>
 <div class="table-users">
    <div class="header">Place the Order</div>

@@ -38,13 +38,20 @@ class OrdersController < ApplicationController
 						flag=0 #Reset falg value			
 				 end	
 			@order.order_placed = filtered_array
-			@order.save
+			
+			if @order.save 
+				flash[:success] = "Order saved successfully."
+				#render 'new'
+			else
+				render 'new'
+			end
+
 		   
 	end
 
 	private
 		def order_params
-			params.require(:order).permit(:ordertype, :totalprice, :paymentmethod, order_placed: [:itemname, :quantity, :unitprice, :tax, :discount, :itemtotalprice])
+			params.require(:order).permit(:ordertype, :table_no, :discount_on_bill, :totalprice, :paymentmethod, order_placed: [:itemname, :quantity, :unitprice, :tax, :discount, :itemtotalprice])
 			
 		end
 

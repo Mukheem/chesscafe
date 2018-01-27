@@ -1,4 +1,4 @@
-
+// Code to populate unit price, discount, tax once item is Selected/changed.
 $(document).on('change', 'select', function() {
     //alert('error');
     var tr = $(this).closest('tr');
@@ -9,13 +9,15 @@ $(document).on('change', 'select', function() {
       dataType: 'json',
       success: function (data) {
         
-         
+        //Assigining Quantity=1 as soon as item is selected.
+         tr.find('input[name="order[order_placed][][quantity]"]').val("1");
+         //Assiging data to Fields on GUI after fetching from DB.
          tr.find('input[name="order[order_placed][][unitprice]"]').val(data.unit_price);
-
          tr.find('input[name="order[order_placed][][tax]"]').val(data.tax);
          tr.find('input[name="order[order_placed][][discount]"]').val(data.discount);
-
-        
+         //Calculating "Item Total Price"
+         var itemTotalPriceCalculated = tr.find('input[name="order[order_placed][][quantity]"]').val()*data.unit_price;
+         tr.find('input[name="order[order_placed][][itemtotalprice]"]').val(itemTotalPriceCalculated);
       },
       error: function () {
         alert('error');
@@ -25,11 +27,26 @@ $(document).on('change', 'select', function() {
    
   });
 
+//Code to load Live Menu items from DB as soon as document is ready
+var MENU_ITEM_LIST = [];
+$(document).ready(function() {
+
+ $.ajax({
+      url: "/items/getList",
+      type: 'get',
+      data: {data_value: "Item"}, //Not needed to use this parameter "Data", As it is throwing error, simply used to save time.
+      dataType: 'json',
+      success: function (data) {
+        MENU_ITEM_LIST=data;
+      },
+      error: function () {
+        alert('error');
+      }
+    });
+  });
 
 
-
-
-
+//Code to Add new row dynamically.
  var trGlobal; //Vriable to initialise select2 on dynalic load
 $(function () {
     //var flag = 1;
@@ -61,8 +78,7 @@ $(function () {
             }
 
             function callbackItemName(attribname,siz){
-                //Replace 0 with falg variable orderplaced[][itemname] 
-               
+                
                 nameAttributitemname = 
                        "order[order_placed][][" + attribname + "]";
                 
@@ -73,20 +89,29 @@ $(function () {
                 inputitemname.setAttribute("style", "width: 300px");
                 inputitemname.setAttribute("class", "form-control");
 
+                //Create an empty option tag for place holder - as per Select2 Gem
                 var optionInputItemName = document.createElement("option");
                 optionInputItemName.setAttribute("value","");
-
                 inputitemname.appendChild(optionInputItemName);
-                inputitemname.append("<% Item.all.each do |item| %>");
 
+                //Old method of apppending values to dynamic rows. Failed to fetch live values. Hence depricated.
+                /*inputitemname.append("<% Item.all.each do |item| %>");
                 var optionInputItemNameTwo = document.createElement("option");
                 optionInputItemNameTwo.setAttribute("value","<%= item.item_name %>");
                 var optionInputItemNameTwoDisplayText = document.createTextNode("<%= item.item_name %>");
                 optionInputItemNameTwo.appendChild(optionInputItemNameTwoDisplayText);
-                
+                 inputitemname.appendChild(optionInputItemNameTwo);
+                  inputitemname.append("<%= item.item_name %><% end %>");*/
 
-                inputitemname.appendChild(optionInputItemNameTwo);
-                //inputitemname.append("<%= item.item_name %><% end %>")
+                 // Append Live values from DB to newly added dynamic rows
+                 $.each(MENU_ITEM_LIST, function (i, item) {
+                   $(inputitemname).append($('<option>', { 
+                        value: item,
+                        text : item
+                    }));
+                });
+
+                
 
                 //and append it to <td> element and then <tr> 
                 var td = document.createElement("td");
@@ -97,14 +122,6 @@ $(function () {
 
 
             function callbackMinusbutton(){
-                //Replace 0 with falg variable orderplaced[][itemname] 
-                /*<td>
-                    <button type="button" class="btn btn-default btn-sm sub" onClick="$(this).closest('tr').remove();">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-                </td>*/
-
-                
                 
                 //create input for itemname, set it's type, id and name attribute
                 var inputitemname = document.createElement("button");
@@ -132,20 +149,15 @@ $(function () {
             callback("itemtotalprice","10");
             callbackMinusbutton();
             
-               document.getElementById("template").appendChild(tr);
+            document.getElementById("template").appendChild(tr);
 
-
-               // flag = flag + 1;
-
-        //$('#input').append($('#template').html());
     }; 
 
     var addAll = function (){
          addInputRow();
     };
 
-   /* $('#ActionAddRow').on('click', addAll);*/
    $('.add').on('click', addAll);
-
+   
     
 });

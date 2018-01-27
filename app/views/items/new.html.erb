@@ -1,0 +1,29 @@
+<!-- Checking for Error messages if any-->
+
+<% if @item.errors.any? %>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h4>
+					<%= pluralize(@item.errors.count,"error") %> stopped this <%= @item.class %> from being saved.
+				</h4>
+			</div>
+			<div class="panel-body">
+				<ul>
+					<% @item.errors.full_messages.each do |msg| %>
+					<li> <%= msg %> </li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
+
+
+
+<!-- Rendering Title -->
+<%= render 'shared/page_title', title: "Menu Items" %>
+<br>
+<%= render 'form' %>

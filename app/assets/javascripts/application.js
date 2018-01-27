@@ -18,19 +18,6 @@
 //= require select2
 //= require_tree  .
 
-/*(function($){
-   "use strict";
-    $(document).on('ready', function(){
-        $("#order_place_id").select2({
-            //allowClear: true,
-            theme: "bootstrap",
-            tags: true,
-            placeholder: "Choose an Item",
-    		allowClear: true
-        });
-    });
-}(jQuery));*/
-
 
 $(document).ready(function() {
 

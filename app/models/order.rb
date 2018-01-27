@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
 
+
 belongs_to :customer
  #serialize :orderplaced
  serialize(:order_placed, Array)
@@ -8,5 +9,9 @@ store_accessor :order_placed, :itemname, :quantity, :unitprice, :tax, :discount,
 
 	ORDER_TYPE_LIST = ["Order","Take-Away","Home Delivery"]
 	PAYMENT_METHOD_LIST = ["Cash","Card","Wallet"]
+
+validates :totalprice, presence: true
+
+
 
 end

@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :orders
   #get 'orders/getdata', to: 'orders#getdata' 
    get 'items/getdata', to: 'items#getdata' 
+   get 'items/getList', to: 'items#getList'
+   resources :items
 end
