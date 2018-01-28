@@ -1,0 +1,68 @@
+<!-- Rendering Title -->
+<%= render 'shared/page_title', title: "Listing Products" %>
+<div class="form-group">
+                <div class="pull-left">
+                    <p>[<%= link_to "New Product", new_product_path %>]</p>
+                </div>
+    </div>
+<div class="table-users">
+   <div class="header">Products</div>
+    <table id="tabledata">
+        <thead>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Tax Name</th>
+            <th>Tax Type</th>
+            <th>Tax (%)</th>
+            <th>Cess (%)</th>
+            <th>Quantity</th>
+            <th>Purchase (₹)</th>
+            <th>Sale (₹)</th>
+            <th>Remaining</th>
+            <th>Sold</th>
+            <th>Actions</th>
+            
+        </thead>
+        <tbody id="input"></tbody>
+        <tbody id="template">
+        	<% @products.each do |product| %>
+        	<tr>
+            	 <td><%= product.product_code %></td>
+                 <td><%= product.product_name %></td>
+                 <td><%= product.category %></td>
+                 <td><%= product.description %></td>
+                 <td><%= product.tax_name %></td>
+                 <td><%= product.tax_type %></td>
+                 <td><%= product.tax %></td>
+                 <td><%= product.cess %></td>
+                 <td><%= product.quantity %></td>
+                 <td><%= product.purchase_price %></td>
+                 <td><%= product.sale_price %></td>
+                 <td><%= product.products_remaining %></td>
+                 <td><%= product.products_sold %></td>
+                <td>
+                    <%= link_to edit_product_path(product), class: "btn btn-default btn-sm" do %>
+                        <i class="glyphicon glyphicon-edit"></i>
+                    <% end %>
+
+                    <%= link_to product_path(product), method: :delete, data: {Confirm: "Sure to delete" }, class: "btn btn-default btn-sm" do %>
+                        <i class="glyphicon glyphicon-trash"></i>
+                    <% end %>
+                    
+                </td>
+
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="form-group">
+				<div class="pull-left">
+					<p>[<%= link_to "New Product", new_product_path %>]</p>
+				</div>
+	</div>
+    <div align="center">
+      <%= will_paginate %>
+    </div>  
+</div>

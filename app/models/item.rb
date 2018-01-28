@@ -5,7 +5,5 @@ class Item < ApplicationRecord
 	validates :unit_price, presence: true
 	validates :tax, presence: true
 	validates :discount, presence: true
-
-	
-
+	default_scope -> {order(updated_at: :desc)}
 end

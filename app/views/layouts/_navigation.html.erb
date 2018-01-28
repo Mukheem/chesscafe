@@ -35,8 +35,15 @@
         </li>
         
         <li><a href="#" id="logo2">User Management</a></li>
-        <li><a href="#" id="logo2">Inventory Management</a></li>
-
+        <li class="dropdown">
+          <a id="logo2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inventory Management<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Menu Listing", items_path %></li>
+            <li><%= link_to "Product Listing", products_path %></li>
+            <!-- <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
       </ul>
       
       <!-- Right Side Drop Down and Link

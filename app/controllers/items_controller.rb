@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
 	def update
 		@item=Item.find(params[:id])
 		if @item.update(item_params)
-			flash[:notice]="Menu Item "+@item.item_name+" Updated"
+			flash[:notice]="Menu Item "+@item.item_name+" updated successfully"
 			redirect_to items_path
 		else
 			render 'edit'
@@ -35,7 +35,8 @@ class ItemsController < ApplicationController
 	end
 
 	def index
-		@items=Item.all.order("created_at DESC")
+		#@items=Item.all.order("created_at DESC")
+		@items=Item.paginate(page: params[:page], per_page: 5)
 	end
 
 	def destroy
