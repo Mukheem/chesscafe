@@ -1,0 +1,48 @@
+<!-- Rendering Title -->
+<%= render 'shared/page_title', title: "Listing Orders" %>
+<div class="form-group">
+                <div class="pull-left">
+                    <p>[<%= link_to "Bill a Customer", new_order_path %>]</p>
+                </div>
+</div>
+
+<div class="table-users">
+   <div class="header">Orders</div>
+    <table id="tabledata">
+        <thead>
+            <th>Order Type</th>
+            <th>Order Placed</th>
+            <th>Total price (₹)</th>
+            <th>Payment Method</th>
+            <th>Ordered at</th>
+            <th>Updated at</th>
+            <th>Customer Id</th>
+            <th>Table No</th>
+            <th>Discount on Bill</th>            
+        </thead>
+        <tbody id="input"></tbody>
+        <tbody id="template">
+        	<% @orders.each do |order| %>
+            
+        	<tr>
+            	 <td><%= order.ordertype %></td>
+                 <td><%= order.order_placed.collect { |item_name| "#{item_name[:itemname]}"}.to_s.remove("\"") %></td>
+                 <td><%= order.totalprice %></td>
+                 <td><%= order.paymentmethod %></td>
+                 <td><%= order.created_at.strftime("%b %d, %Y; %H:%M:%S") %></td>
+                 <td><%= order.updated_at.strftime("%b %d, %Y; %H:%M:%S") %></td>
+                 <td><%= link_to order.customer_id, customer_info_path(order.customer_id) %></td>
+                 <td><%= order.table_no %></td>
+                 <td><%= order.discount_on_bill %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="form-group">
+				<div class="pull-left">
+					 <p>[<%= link_to "Bill a Customer", new_order_path %>]</p>
+				</div>
+	</div>
+   
+</div>
+</div>

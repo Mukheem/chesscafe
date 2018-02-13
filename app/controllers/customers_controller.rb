@@ -12,14 +12,20 @@ class CustomersController < ApplicationController
 	def new
 		@customer=Customer.new
 	end
-
+	def info
+		#@customer=Customer.find(params[:id])
+		#@order=Order.where("customer_id = :id")
+		@order=Order.where(customer_id: params[:id])
+		@customer=Customer.find(params[:id])
+	end
 	def create
 			flag=0
 			begin
 				@customer=Customer.find_by_phonenumber(customer_params[:phonenumber])
+				$CUSTOMER_GLOBAL=@customer
 				if  Customer.exists?(@customer.id)
 					if flag==0
-						flash[:success] = "Customer details found successfully." # :success :alert :warning :info
+						flash[:success] = "Customer details found successfully." # :success :alert :warning :info :notice
 					else
 						flash[:warning] = "Customer created. Kindly update the details."
 					end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   #get 'orders/getdata', to: 'orders#getdata' 
    get 'items/getdata', to: 'items#getdata' 
    get 'items/getList', to: 'items#getList'
+   get 'customers/info/:id', to: 'customers#info', as: 'customer_info'
    resources :items
    resources :products
 end

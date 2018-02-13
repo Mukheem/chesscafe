@@ -1,0 +1,78 @@
+<!-- Rendering Title -->
+<%= render 'shared/page_title', title: "Listing Orders" %>
+<div class="form-group">
+                <div class="pull-left">
+                    <p>[<%= link_to "Customer Listings", customers_path %>]</p>
+                </div>
+</div>
+
+<div class="table-users">
+   <div class="header">Customer Info</div>
+    <table id="tabledata">
+        <thead>
+            <th>Customer Id</th>
+            <th>Contact</th>
+            <th>Order Type</th>
+            <th>Order Placed</th>
+            <th>Bill (₹)</th>
+            <th>Paid By</th>
+            <th>Ordered at</th>
+            <th>Table#</th>
+            <th>Discount on Bill(%)</th>            
+        </thead>
+        <tbody id="input"></tbody>
+        <tbody id="template">
+            <% customer=@customer %>
+        	<% @order.each do |order| %>
+           
+           <tr>
+                <td><%= order.customer_id %></td>
+                <td><%= link_to customer.phonenumber, customer_path(customer) %></td>
+            	  <td><%= order.ordertype %></td>
+                  <td>
+                    <% order.order_placed.each do |hash| %>
+                      <%= "[" %>
+                         <%
+                             hash.each do |key, value|
+                                if key=="itemname"
+                                    key="Item"
+                                end
+                                if key=="quantity"
+                                    key="Quantity"
+                                end
+                                if key=="unitprice"
+                                    key="Unit Price(₹)"
+                                end
+                                if key=="tax"
+                                    key="Tax(%)"
+                                end
+                                if key=="discount"
+                                    key="Discount(%)"
+                                end
+                                if key=="itemtotalprice"
+                                    key="Total(₹)"
+                                end
+
+                         %>
+                         <%= key %>-<%= value %>           
+                         <% end %>
+                     <%= "]" %>                 
+                    <% end %>
+                </td>
+                 <td><%= order.totalprice %></td>
+                 <td><%= order.paymentmethod %></td>
+                 <td><%= order.created_at.strftime("%b %d, %Y; %H:%M:%S") %></td>
+                 <td><%= order.table_no %></td>
+                 <td><%= order.discount_on_bill %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <div class="form-group">
+				<div class="pull-left">
+					 <p>[<%= link_to "Customer Listings", customers_path %>]</p>
+				</div>
+	</div>
+   
+</div>
+</div>

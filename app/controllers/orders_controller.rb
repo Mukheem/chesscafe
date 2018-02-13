@@ -14,9 +14,16 @@ class OrdersController < ApplicationController
 		#puts item_name_selected
 	end
 =end
+
+	def index
+		#@items=Item.all.order("created_at DESC")
+		@orders=Order.all
+	#	@products=Product.paginate(page: params[:page], per_page: 5)
+	end
+
 	def create
 		@order=Order.new(order_params)
-		@order.customer=Customer.first
+		@order.customer=$CUSTOMER_GLOBAL
 		
 		# Filters input records with all values. i.e., If any input record misses at least one value, this logic excludes it from being saved in DB
 			#Local variable declarations
