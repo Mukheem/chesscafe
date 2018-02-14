@@ -15,8 +15,9 @@ class CustomersController < ApplicationController
 	def info
 		#@customer=Customer.find(params[:id])
 		#@order=Order.where("customer_id = :id")
-		@order=Order.where(customer_id: params[:id])
+		@order=Order.where(customer_id: params[:id]).paginate(page: params[:page], per_page: 10)
 		@customer=Customer.find(params[:id])
+	#@orders=Order.paginate(page: params[:page], per_page: 25)
 	end
 	def create
 			flag=0

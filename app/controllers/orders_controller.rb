@@ -16,9 +16,10 @@ class OrdersController < ApplicationController
 =end
 
 	def index
-		#@items=Item.all.order("created_at DESC")
-		@orders=Order.all
-	#	@products=Product.paginate(page: params[:page], per_page: 5)
+		#@orders=Order.all
+		@orders=Order.paginate(page: params[:page], per_page: 25)
+
+		
 	end
 
 	def create
